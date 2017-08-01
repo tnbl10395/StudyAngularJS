@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="angular.min.js"></script>
+	<title>Test 6</title>
+</head>
+<body>
+	<div ng-app="ungdungAngular" ng-controller="sinhvienController">
+		<form name="sinhvienForm" novalidate>
+			<table border="0">
+				<tr><td>
+					Nhap ho:</td><td><input type="text" name="ho" ng-model="ho" required>
+					<span style="color: red" ng-show="sinhvienForm.ho.$dirty && sinhvienForm.ho.$invalid">
+						<span ng-show="sinhvienForm.ho.$error.required">Ho la bat buoc</span>
+					</span>
+				</td></tr>
+				<tr><td>
+					Nhap ten:</td><td><input type="text" name="ten" ng-model="ten" required>
+					<span style="color: red" ng-show="sinhvienForm.ten.$dirty && sinhvienForm.ten.$invalid">
+						<span ng-show="sinhvienForm.ten.$error.required">Ten la bat buoc</span>
+					</span>
+				</td></tr>
+				<tr><td>
+					Nhap email:</td><td><input type="text" name="email" ng-model="email" length="100" required>
+					<span style="color: red" ng-show="sinhvienForm.email.$dirty && sinhvienForm.email.$invalid">
+						<span ng-show="sinhvienForm.email.$error.required">Email bat buoc</span>
+						<span ng-show="sinhvienForm.email.$error.required">Email khong hop le</span>
+					</span>
+				</td></tr>
+				<tr>
+					<td><button ng-click="reset()">Reset</button></td>
+					<td><button ng-disabled="sinhvienForm.ho.$dirty && sinhvienForm.ho.$invalid ||
+											sinhvienForm.ten.$dirty && sinhvienForm.ten.$invalid ||
+											sinhvienForm.email.$dirty && sinhvienForm.email.$invalid" ng-click="submit()">Submit</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<script>
+		var ungdungAngular = angular.module("ungdungAngular",[]);
+		ungdungAngular.controller("sinhvienController",function($scope){
+			$scope.reset = function(){
+				$scope.ho="Tran Ngoc Bao";
+				$scope.ten="Long";
+				$scope.email="tnbaolongit@gmail.com";
+			}
+			$scope.reset();
+		});
+	</script>
+</body>
+</html>

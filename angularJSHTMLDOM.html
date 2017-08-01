@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="angular.min.js"></script>
+	<title>Test 5</title>
+</head>
+<body ng-app="">
+<table border="0">
+	<tr>
+		<td><input type="checkbox" ng-model="vohieuhoa" name="">vo hieu hoa</td>
+		<td><button ng-disabled="vohieuhoa">Nhap vao day</button></td>
+	</tr>
+	<tr>
+		<td><input type="checkbox" ng-model="show" name="">hien thi nut</td>
+		<td><button ng-show="show">Nhap vao day</button></td>
+	</tr>
+	<tr>
+		<td><input type="checkbox" ng-model="hide" name="">an nut</td>
+		<td><button ng-hide="hide">Nhap vao day</button></td>
+	</tr>
+	<tr>
+		<td><p>Tong luong click: {{click}}</p></td>
+		<td><button ng-click="click=click+1">Nhap vao day</button></td>
+	</tr>
+</table>
+</body>
+</html>
