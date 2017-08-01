@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="angular.min.js"></script>
+	<title>Test 3</title>
+</head>
+<body>
+	<div ng-app="ungdungAngularJS" ng-controller="sinhvienController">
+		<table border="0">
+			<tr>
+				<td>Nhap ho: </td>
+				<td><input type="text" ng-model="sinhvien.ho" name=""></td>
+			</tr>
+			<tr>
+				<td>Nhap ten: </td>
+				<td><input type="text" ng-model="sinhvien.ten" name=""></td>
+			</tr>
+			<tr>
+				<td>Hoc phi: </td>
+				<td><input type="text" ng-model="sinhvien.hocphi" name=""></td>
+			</tr>
+			<tr>
+				<td>Mon hoc: </td>
+				<td><input type="text" ng-model="tenMonHoc" name=""></td>
+			</tr>
+		</table>
+		<br>
+		<table border="0">
+			<tr>
+				<td>Ten dang chu hoa:</td>
+				<td>{{sinhvien.hoten()|uppercase}}</td>
+			</tr>
+			<tr>
+				<td>Ten dang chu thuong:</td>
+				<td>{{sinhvien.hoten()|lowercase}}</td>
+			</tr>
+			<tr>
+				<td>Hoc phi:</td>
+				<td>{{sinhvien.hocphi|currency}}</td>
+			</tr>
+			<tr>
+				<td>Mon hoc:</td>
+				<td>
+					<ul>
+						<li ng-repeat="monhoc in sinhvien.tenMonHoc | filter: tenMonHoc | orderBy:'diemthi'">
+							{{ monhoc.ten+',diem thi: '+monhoc.diemthi }}
+						</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<script>
+		var ungdungAngularJS = angular.module("ungdungAngularJS",[]);
+		ungdungAngularJS.controller("sinhvienController",function($scope){
+			$scope.sinhvien={
+				ho:"Tran Ngoc Bao",
+				ten:"Long",
+				hocphi:200,
+				tenMonHoc:[
+					{ten:'vat ly',diemthi:7.5},
+					{ten:'toan',diemthi:8.5},
+					{ten:'hoa',diemthi:10},
+				],
+				hoten: function(){
+					var doiTuongSinhVien;
+					doiTuongSinhVien = $scope.sinhvien;
+					return doiTuongSinhVien.ho+" "+doiTuongSinhVien.ten;
+				}
+
+			}
+		});
+	</script>
+</body>
+</html>

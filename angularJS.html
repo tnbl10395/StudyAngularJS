@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="angular.min.js"></script>
+	<title>Test version 1</title>
+</head>
+ <body ng-app="ungdungdautien">
+      <div ng-controller="ViduController" >
+         <h2>Chao mung ban den voi {{xinchao.tieude}} tai VietJack.com!</h2>
+      </div>
+      <div>
+      	Type Name: <input type="text" ng-model="ten"></input>
+      	<p>Xin chao <span ng-bind="ten"></span></p>
+      </div>
+      <script>
+         angular.module("ungdungdautien", [])
+         .controller("ViduController", function($scope) {
+            $scope.xinchao = {};
+            $scope.xinchao.tieude = "AngularJS";
+         });
+      </script>
+   </body>
+</html>

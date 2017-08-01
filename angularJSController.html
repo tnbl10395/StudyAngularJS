@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="angular.min.js"></script>
+	<title>Test 2</title>
+</head>
+<body>
+	<div ng-app="ungdung" ng-controller="sinhvienController">
+		Nhap ho : <input type="text" ng-model="sinhvien.ho" name="">
+		Nhap ten: <input type="text" ng-model="sinhvien.ten" name="">
+		<br>
+		Ban dang nhap: {{sinhvien.hoten()}}
+	</div>
+	<script>
+		var ungdung = angular.module("ungdung",[]);
+		ungdung.controller('sinhvienController', function($scope){
+			$scope.sinhvien = {
+			ho: "Tran Ngoc Bao",	
+			ten: "Long",
+			hoten: function(){
+				var doituongsinhvien;
+				doituongsinhvien = $scope.sinhvien;
+				return doituongsinhvien.ho+" "+doituongsinhvien.ten;
+				}
+			};		
+		});
+	</script>
+</body>
+</html>
