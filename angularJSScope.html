@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="angular.min.js"></script>
+	<title>Test 11</title>
+</head>
+<body>
+	<div ng-app="ungdungAngular" ng-controller="nhanvienController">
+		<p>{{message}} <br> {{type}}</p>
+		<div ng-controller="nhanvienITController">
+			<p>{{message}} <br> {{type}}</p>
+		</div>
+		<div ng-controller="nhanvienBHController">
+			<p>{{message}} <br> {{type}} </p>
+		</div>
+	</div>
+	<script>
+		var ungdungAngular = angular.module("ungdungAngular",[]);
+		ungdungAngular.controller('nhanvienController', function($scope){
+			$scope.message = "Ben trong nhan vien Controller";
+			$scope.type = "Nhan vien";	
+		});
+		ungdungAngular.controller('nhanvienITController', function($scope){
+			$scope.message = "Ben trong nhan vien IT controller";
+		});
+		ungdungAngular.controller('nhanvienBHController', function($scope){
+			$scope.message = "Ben trong nhan vien BH controller";
+			$scope.type = "Nhan vien BH";
+		});		
+	</script>
+</body>
+</html>
+<!-- Tính kế thừa của Scope trong AngularJS -->

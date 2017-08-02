@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="angular.min.js"></script>
+	<title>Test 10</title>
+</head>
+<body>
+	<div ng-app="ungdungAngularJS" ng-controller="tinhBPController">
+		<p>Nhap mot so: <input type="number" ng-model="number" />
+		<button ng-click="binhphuong()">X<sup>2</sup></button>
+		<p>Ket qua: {{ ketqua }}</p>
+	</div>
+	<script>
+		var ungdungAngular = angular.module("ungdungAngularJS",[]);
+		ungdungAngular.factory('toanhocService',function(){
+			var factory = {};
+			factory.phepnhan = function(a,b){
+				return a*b;
+			}
+			return factory;
+		});
+		ungdungAngular.service('tinhBPService', function(toanhocService){
+			this.binhphuong = function(a){
+				return toanhocService.phepnhan(a,a);
+			}
+		});
+		ungdungAngular.controller('tinhBPController', function($scope,tinhBPService){
+			$scope.binhphuong = function(){
+				$scope.ketqua = tinhBPService.binhphuong($scope.number);
+			}
+		});
+	</script>
+</body>
+</html>

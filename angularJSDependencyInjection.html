@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="angular.min.js"></script>
+	<title>Test 11</title>
+</head>
+<body>
+	<div ng-app="ungdungAngular" ng-controller="tinhBPController">
+		<p>Nhap mot so: <input type="number" ng-model="number"/>
+		<button ng-click="binhphuong()">X<sup>2</sup></button>
+		<p>Ket qua: {{ketqua}}</p>
+	</div>
+	<script>
+		var ungdungAngular = angular.module("ungdungAngular",[]);
+
+		ungdungAngular.config(function($provide){
+			$provide.provider('toanhocService', function(){
+				this.$get = function(){
+					var factory = {};
+					factory.phepnhan = function(a,b){
+						return a * b;
+					}
+					return factory;
+				}
+			});
+		});
+		ungdungAngular.value("giatrimacdinh",5);
+		ungdungAngular.factory('toanhocService',function(){
+			var factory = {};
+			factory.phepnhan = function(a,b){
+				return a * b;
+			}
+			return factory;	
+		});
+		ungdungAngular.service("tinhBPService", function(toanhocService){
+			this.binhphuong = function(a){
+				return toanhocService.phepnhan(a,a);
+			}
+		});
+		ungdungAngular.controller('tinhBPController', function($scope, tinhBPController, giatrimacdinh){
+			$scope.number = giatrimacdinh;
+			$scope.ketqua = tinhBPService.binhphuong($scope.number);
+
+			$scope.binhphuong = function(){
+				$scope.ketqua = tinhBPService.binhphuong($scope.number);
+			}
+		});
+	</script>
+</body>
+</html>

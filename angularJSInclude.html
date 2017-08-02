@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="angular.min.js"></script>
+	<style>
+		table, th, td{
+			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 5px;
+		}
+		table tr:nth-child(odd){
+			background-color: #f2f2f2;
+		}
+		table tr:nth-child(even){
+			background-color: #ffffff;
+		}
+	</style>
+	<title>Test 7</title>
+</head>
+<body>
+	<div ng-app="ungdungAngular" ng-controller="sinhvienController">
+		<div ng-include="'main.html'"></div>
+		<div ng-include="'tenMonHoc.html'"></div>
+	</div>
+	<script>
+		var ungdungAngular = angular.module("ungdungAngular",[]);
+		ungdungAngular.controller("sinhvienController", function($scope){
+			$scope.sinhvien={
+				ho:"Tran Ngoc Bao",
+				ten:"Long",
+				hocphi:200,
+				tenMonHoc:[
+					{ten:"vat ly",diemthi:10},
+					{ten:"toan",diemthi:10},
+					{ten:"hoa",diemthi:10}
+				],
+				hoten: function(){
+					var doituongsinhvien;
+					doituongsinhvien = $scope.sinhvien;
+					return doituongsinhvien.ho+" "+doituongsinhvien.ten;
+				}
+			};	
+		});
+	</script>
+</body>
+</html>
