@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="angular.min.js"></script>
+	<title>Test 14</title>
+</head>
+<body>
+	<div ng-app="ungdungAngularjs" ng-controller="nhanvienController">
+		{{luong | currency}}
+		<br>
+		{{ngaytinhluong | date}}
+		<br>
+		{{nhanvienid | number}}
+		<br>
+	</div>
+	<script>
+		var ungdungAngularjs = angular.module("ungdungAngularjs",[]);
+		ungdungAngularjs.controller('nhanvienController', function($scope){
+			$scope.luong = 2000;
+			$scope.ngaytinhluong = new Date();
+			$scope.nhanvienid = 3011;
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="angular.min.js"></script>
+	<title>Test 12</title>
+</head>
+<body>
+	<h2>Ung dung angular</h2>
+	<div ng-app="ungdungAngularjs" ng-controller="sinhvienController">
+		<sinhvienn ten="Chinh"></sinhvienn>
+		<br>
+		<sinhvienn ten="Manh"></sinhvienn>
+	</div>
+	<script>
+		var ungdungAngularjs = angular.module("ungdungAngularjs",[]);
+
+		ungdungAngularjs.directive('sinhvienn',function(){
+			var directive = {};
+			directive.restrict = "E";
+			directive.template = "Sinh vien: <b>{{sinhvien.ten}}</b>, MSSV: <b>{{sinhvien.mssv}}</b>";
+			directive.scope = {
+				sinhvien : "=ten"
+			}
+			directive.compile = function(element,attributes){
+				element.css("border","1px solid #cccccc");
+
+				var hamLienKet = function($scope, element, attributes){
+					element.html("Sinh vien: <b>"+$scope.sinhvien.ten+"</b>, MSSV: <b>"+$scope.sinhvien.mssv+"</b><br>");
+					element.css('background-color', 'green');
+				}
+				return hamLienKet;
+			}
+			return directive;
+		});
+		ungdungAngularjs.controller('sinhvienController', function($scope){
+			$scope.Chinh = {};
+			$scope.Chinh.ten = "Tran Manh Chinh";
+			$scope.Chinh.mssv = 201543245;
+
+			$scope.Manh = {};
+			$scope.Manh.ten = "Luong Bang Manh";
+			$scope.Manh.mssv = 205903351;
+		});
+	</script>
+</body>
+</html>

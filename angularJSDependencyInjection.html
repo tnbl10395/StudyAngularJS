@@ -22,7 +22,7 @@
 						return a * b;
 					}
 					return factory;
-				}
+				};
 			});
 		});
 		ungdungAngular.value("giatrimacdinh",5);
@@ -38,7 +38,7 @@
 				return toanhocService.phepnhan(a,a);
 			}
 		});
-		ungdungAngular.controller('tinhBPController', function($scope, tinhBPController, giatrimacdinh){
+		ungdungAngular.controller('tinhBPController', function($scope, tinhBPService, giatrimacdinh){
 			$scope.number = giatrimacdinh;
 			$scope.ketqua = tinhBPService.binhphuong($scope.number);
 
